@@ -22,6 +22,7 @@ class UserModelTest(TestCase):
         )
 
     def test_inn_unique(self):
+        """ Проверка на уникальность ИНН """
         with self.assertRaises(IntegrityError):
             User.objects.create(
                 username='user_for_test1',
@@ -30,6 +31,7 @@ class UserModelTest(TestCase):
             )
 
     def test_inn_validator(self):
+        """ Проверка валидатора ИНН """
         user = User.objects.create(
             username='user_for_test1',
             inn='test_text',
@@ -40,6 +42,7 @@ class UserModelTest(TestCase):
             user.full_clean()
 
     def test_money_validator(self):
+        """ Проверка валидатора money """
         user = User.objects.create(
             username='user_for_test1',
             inn='36640693972',
@@ -50,6 +53,7 @@ class UserModelTest(TestCase):
             user.full_clean()
 
     def test_send_money_form(self):
+        """ Проверка формы SendMoneyForm """
         test_data_with_errors = [
             {'from_user': '1', 'money': '-1000', 'to_users': '36640692271'},
             {'from_user': '31', 'money': '1000', 'to_users': '36640692271'},
@@ -69,6 +73,7 @@ class UserModelTest(TestCase):
             self.assertEqual(form.is_valid(), True)
 
     def test_send_money_view(self):
+        """ Проверка вьюхи SendMoneyView """
         test_data_with_errors = [
             {'from_user': '1', 'money': '-1000', 'to_users': '36640692271'},
             {'from_user': '31', 'money': '1000', 'to_users': '36640692271'},

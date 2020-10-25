@@ -5,6 +5,7 @@ from decimal import Decimal
 
 
 class User(AbstractUser):
+    """ Расширение стандартной модели Django """
     inn = models.CharField('ИНН', max_length=12, unique=True, null=True,
         blank=True, validators=[RegexValidator('^[\d]+$')])
 

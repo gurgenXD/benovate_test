@@ -10,6 +10,7 @@ User = get_user_model()
 
 class SendMoneyView(View):
     def get(self, request):
+        """ Показ формы """
         send_money_form = SendMoneyForm()
 
         context = {
@@ -18,6 +19,7 @@ class SendMoneyView(View):
         return render(request, 'users/send-money.html', context)
 
     def post(self, request):
+        """ Отправка денег для списка ИНН """
         send_money_form = SendMoneyForm(request.POST)
 
         if send_money_form.is_valid():

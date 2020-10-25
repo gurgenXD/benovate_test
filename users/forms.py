@@ -7,6 +7,7 @@ User = get_user_model()
 
 
 class SendMoneyForm(forms.Form):
+    """ Форма отправки денег списку ИНН """
     from_user = forms.ModelChoiceField(
         required=True,
         label='От кого',
