@@ -1,0 +1,5 @@
+<form action="{% url 'send_money' %}" method="POST">
+    {% csrf_token %}
+    {{ send_money_form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
